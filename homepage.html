@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity=""
+        crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .myScroll::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<body>
+    <main
+        class="h-screen inset-0 flex justify-center items-center bg-[linear-gradient(90deg,#e2e2e2,#c9d6ff)] relative">
+        <div class="border border-black bg-white w-[95%] h-[93%] shadow-lg shadow-black/35 grid grid-cols-[250px,1fr]">
+
+            <!-- panel left -->
+            <section class="bg-white  border-black border-2 h-[93vh] flex flex-col gap-1 ">
+
+                <div class="myScroll border-2 rounded-md p-1 m-3  h-[70vh] space-y-3 overflow-y-scroll  bg-gray-50 ">
+                    <div class="bg-white shadow rounded-md p-3 border flex gap-3 items-center">
+                        <div class="border-2  w-[10vh] overflow-hidden h-[50px]" >
+                            <img class="" src="doctor.png" alt="">
+                        </div>
+                        <div class="border-2">
+                            <h3 class="font-semibold">Card 1</h3>
+                            <p class="text-sm text-gray-600">Some example content.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 2</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 3</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 4</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 5</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 6</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 7</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 8</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+                    <div class="bg-white shadow rounded-md p-3 border">
+                        <h3 class="font-semibold">Card 9</h3>
+                        <p class="text-sm text-gray-600">More content here.</p>
+                    </div>
+
+
+                </div>
+                <div class="bg-gray-50  h-[25vh] border-t-2 flex justify-center items-center  ">
+                    <div class="w-[90%] h-[90%]  flex flex-col justify-between">
+                        <div class="flex items-center gap-2 text-gray-700 font-bold text-lg">
+                            <i class="fa-solid fa-users text-sky-600"></i>
+                            <span>Virtual Workspace</span>
+                        </div>
+                        <button id="addWorker"
+                            class="rounded-lg bg-green-400 hover:bg-green-600 text-white  w-full text-center py-2 font-medium shadow transition">+
+                            Ajouter
+                            un employé</button>
+                        <div class="bg-sky-50 border rounded-md text-sky-800  border-sky-300 text-sm px-3 py-2 ">
+                            <span>0</span>
+                            employé(s) en attente</div>
+                    </div>
+                </div>
+
+
+                <!-- <button id="addWorker"
+                    class="rounded-lg bg-green-400 hover:bg-green-600 text-white px-5 py-1 text-center w-fit mx-auto absolute bottom-6 inset-x-0 border-2">
+
+                    + add co-worker</button> -->
+            </section>
+
+            <!-- pnel right -->
+            <section
+                class="bg-white bg-[url('/plan-tamplete.jpg')] bg-no-repeat bg-center bg-cover  my-4 flex justify-between">
+                <div class="w-[39%] h-full border-2 ">
+                    <div class="flex justify-center items-center border-2  h-[34%] bg-red-400 opacity-[40%] ">
+                        salle conference</div>
+                    <div class="flex justify-center items-center border-2 h-[66%] bg-blue-400 opacity-[40%]">
+                        Réception</div>
+                </div>
+
+                <div class=" w-[46%] flex flex-col justify-between">
+                    <div class=" h-[35%]  flex">
+                        <div
+                            class="border-2 w-[50%] flex justify-center items-center text-white  bg-yellow-300 opacity-70 ">
+                            Salle des serveurs
+                        </div>
+                        <div class="border-2 w-[50%] flex justify-center items-center bg-green-300 opacity-50">Salle de
+                            sécurité</div>
+
+                    </div>
+                    <div class=" h-[35%]  flex">
+                        <div class=" w-[50%] flex justify-center items-center text-white  bg-purple-300 opacity-70">
+                            Salle du personnel
+                        </div>
+                        <div class=" w-[50%] flex justify-center items-center bg-orange-300 opacity-70">Salle d’archives
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    
+
+
+
+
+</body>
+<script src="main.js"></script>
+
+</html>
