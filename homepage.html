@@ -25,13 +25,13 @@
             <section class="bg-white  border-black border-2 h-[93vh] flex flex-col gap-1 ">
 
                 <div class="myScroll border-2 rounded-md p-1 m-3  h-[70vh] space-y-3 overflow-y-scroll  bg-gray-50 ">
-                    <div class="bg-white shadow rounded-md p-3 border flex gap-3 items-center">
-                        <div class="border-2  w-[10vh] overflow-hidden h-[50px]">
-                            <img class="" src="doctor.png" alt="">
+                    <div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+                        <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
+                            <img class="w-full h-full object-cover" src="/téléchargement (4).jpeg" alt="">
                         </div>
-                        <div class="border-2">
-                            <h3 class="font-semibold">Card 1</h3>
-                            <p class="text-sm text-gray-600">Some example content.</p>
+                        <div class="border-2 ">
+                            <h3 class="font-semibold">El Hamdaoui </h3>
+                            <p class="text-sm text-gray-600">Technicien IT.</p>
                         </div>
 
                     </div>
@@ -131,9 +131,9 @@
         </div>
     </main>
 
-    <div class="w-full h-screen   bg-[rgba(0,0,0,0.3)] backdrop-blur-sm absolute inset-0">
+    <div class="w-full h-screen hidden  bg-[rgba(0,0,0,0.3)] backdrop-blur-sm absolute inset-0">
         <div id="popup"
-            class="myScroll shadow-lg border-2 border-black w-[40%] h-[85vh] overflow-y-scroll bg-white  fixed left-0 right-0 mx-auto top-1/2 -translate-y-1/2 z-50   rounded-md">
+            class="myScroll  shadow-lg border-2 border-black w-[40%] h-[85vh] overflow-y-scroll bg-white  fixed left-0 right-0 mx-auto top-1/2 -translate-y-1/2 z-50 hidden  rounded-md">
             <h1 class="text-2xl font-semibold p-3">Ajouter un nouvel employé</h1>
             <div class="flex flex-col gap-2 px-3  ">
                 <div class="grid grid-cols-2  gap-4 ">
@@ -175,7 +175,8 @@
 
                 <div class="border-2 bg-gray-50 rounded py-2">
                     <h1 class="font-medium text-gray-900 text-lg p-2">Expériences professionnelles</h1>
-                    <div class="grid grid-cols-2 gap-x-3 gap-y-1 p-2 bg-gray-100 border rounded-md mx-2 ">
+                    <div id="cardPlaces" class="space-y-2">
+                        <!-- <div class="grid grid-cols-2 grid-rows-1 gap-x-3 gap-y-1 p-2 bg-gray-100 border rounded-md mx-2">
                         <div class="flex flex-col">
                             <label class="mb-1 font-medium text-gray-700" for="Entreprise">Entreprise</label>
                             <input id="Entreprise" class="border-2 w-full rounded-lg  p-2" type="text"
@@ -195,9 +196,16 @@
                             <input id="dateFin" class="border-2 w-full rounded-lg  p-2" type="date"
                                 placeholder="Date fin">
                         </div>
+                        
+                            <button class="deleteExp bg-red-400 w-fit  hover:bg-red-500 rounded-md px-3 py-1"> <i class="fa-solid fa-trash"></i> Delete     </button>
+                        
+                    </div> -->
                     </div>
+
                     <div class="flex justify-end font-medium px-2 mt-2">
-                        <button class="bg-green-500 px-3 py-2 rounded-lg text-white hover:bg-green-600">Ajouter une expérience</button>
+                        <button onclick="addExperience()"
+                            class="bg-yellow-500 px-3 py-2 rounded-lg text-white hover:bg-yellow-600">Ajouter une
+                            expérience</button>
                     </div>
                 </div>
 
@@ -206,7 +214,7 @@
             <div class="p-3  flex justify-end gap-6">
                 <button id="close"
                     class="bg-gray-50 text-black border-2 font-medium px-4 py-2 rounded-xl hover:bg-gray-200">Annuler</button>
-                <button id="save"
+                <button onclick="saveEmpolye()"
                     class="bg-green-500 text-white px-5 py-2 rounded-xl font-medium hover:bg-green-600">Ajouter
                     l'employé</button>
             </div>
