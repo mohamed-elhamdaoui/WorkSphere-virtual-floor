@@ -8,10 +8,11 @@ let photoURL = document.getElementById("photoURL")
 // console.log(photoURL)
 let Email = document.getElementById("Email")
 let phone = document.getElementById("phone")
-
 let imgInput = document.getElementById("imgInput")
-
 let empCardContainer = document.getElementById("empCardContainer")
+
+
+let employeList = []
 
 function openPopup() {
     popup.classList.remove("hidden")
@@ -100,20 +101,24 @@ function addExperience() {
 
 function saveEmploye() {
 
-    let nom = fullName.value;
-    let rule = Role.value;
-    let mail = Email.value;
-    let telephone = phone.value;
-    // let entreprise
-    let expreienceList = [];
+    let employe = {
+        nom: fullName.value,
+        rule: Role.value,
+        mail: Email.value,
+        telephone: phone.value,
+        img: imgInput.src,
+        expreienceList: []
+
+    };
+    console.log(employe.rule)
 
     let empCard = `<div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="${imgInput.src}" alt="">
+                            <img class="w-full h-full object-cover" src="${employe.img}" alt="">
                         </div>
                         <div class="border-2 ">
-                            <h3 class="font-semibold">${nom} </h3>
-                            <p class="text-sm text-gray-600">${rule}.</p>
+                            <h3 class="font-semibold">${employe.nom} </h3>
+                            <p class="text-sm text-gray-600">${employe.rule}.</p>
                         </div>
 
                     </div>`
@@ -127,28 +132,66 @@ function saveEmploye() {
         let experience = {
             entreprise: ele.querySelector("#Entreprise").value,
             poste: ele.querySelector("#Poste").value,
-            dateDebut : ele.querySelector("#dateDebut").value,
-            dateFin : ele.querySelector("#dateFin").value
+            dateDebut: ele.querySelector("#dateDebut").value,
+            dateFin: ele.querySelector("#dateFin").value
         };
         // console.log(experience.entreprise)
         // console.log(experience.dateFin)
-        expreienceList.push(experience);
+        employe.expreienceList.push(experience);
     })
-    console.log(expreienceList)
+
+    employeList.push(employe)
+
     closePopup()
+}
+
+function test() {
+    console.log(employeList)
+}
+
+let empLoadPopup = document.getElementById("empLoadPopup");
+let loadContainer = document.getElementById("loadContainer")
+function closeLoad() {
+    empLoadPopup.classList.add("hidden")
+    loadContainer.innerHTML = ``
+}
+
+function dispoEmploye(roleAllowed, Area) {
+    empLoadPopup.classList.remove("hidden")
+    console.log(roleAllowed)
+    console.log(Area)
+    console.log(employeList)
+
+    let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule))
+    empAllowed.forEach(ele => {
+        let div = document.createElement("div")
+        div.className = "bg-white shadow rounded-md p-2 border flex gap-1 items-center relative"
+        div.innerHTML = `<div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="${ele.img}" alt="">
+                </div>
+                <div class="border-2 ">
+                    <h3 class="font-semibold">${ele.nom} </h3>
+                    <p class="text-sm text-gray-600">${ele.rule}.</p>
+
+                    <button class="addBtn absolute right-4  top-[25%] border-2 rounded-md bg-green-400 hover:bg-green-500 h-fit px-3 py-1">add to area</button>
+                </div>`
+
+        loadContainer.appendChild(div)
+    });
+
+    document.querySelectorAll(".addBtn").forEach((e)=> {
+        e.addEventListener("click", {
+            
+        })
+    })
 }
 
 
 
-
 // let x = 55 ;
-
 // delete x ;
-
 // function sum(a,a)
 // {
 //     console.log(a + a);
 // }
-
-
 // sum(2,5);

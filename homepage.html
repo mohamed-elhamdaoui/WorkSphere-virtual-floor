@@ -26,7 +26,7 @@
 
                 <div id="empCardContainer"
                     class="myScroll border-2 rounded-md p-1 m-3  h-[70vh] space-y-3 overflow-y-scroll  bg-gray-50 ">
-                    <div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+                    <div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center" onclick="test()">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover" src="/téléchargement (4).jpeg" alt="">
                         </div>
@@ -37,7 +37,7 @@
 
                     </div>
 
-                    
+
 
 
                 </div>
@@ -70,7 +70,10 @@
                 class="bg-white bg-[url('/plan-tamplete.jpg')] bg-no-repeat bg-center bg-cover  my-4 flex justify-between">
                 <div class="w-[39%] h-full border-2 ">
                     <div class="flex justify-center items-center border-2  h-[34%] bg-red-400 opacity-[40%] ">
-                        salle conference</div>
+                        <button id="ConferRoom"
+                            onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité'],'ConferRoom')"
+                            class="font-bold text-xl bg-white rounded-full px-2 text-center">+</button>
+                    </div>
                     <div class="flex justify-center items-center border-2 h-[66%] bg-blue-400 opacity-[40%]">
                         Réception</div>
                 </div>
@@ -114,11 +117,11 @@
                         <select class="border-2  rounded-lg p-2" name="" id="Role">
                             <option value="" selected disabled hidden>Sélectionner un rôle</option>
                             <option value="Réceptionniste">Réceptionniste</option>
-                            <option value="Technicien">Technicien IT</option>
-                            <option value="sécurité">Agent de sécurité</option>
+                            <option value="Technicien IT">Technicien IT</option>
+                            <option value="Agent de sécurité">Agent de sécurité</option>
                             <option value="Manager">Manager</option>
                             <option value="Nettoyage">Nettoyage</option>
-                            <option value="Autres">Autres rôles</option>
+                            <option value="Autres rôles">Autres rôles</option>
                         </select>
                     </div>
                 </div>
@@ -189,6 +192,23 @@
                     l'employé</button>
             </div>
         </div>
+    </div>
+
+    <div id="empLoadPopup" class="absolute inset-0 w-full h-screen bg-[rgba(0,0,0,0.3)] hidden">
+
+        <div class="relative inset-x-0 mx-auto top-1/2 -translate-y-1/2  w-[40vw] h-[45vh] bg-white rounded-lg p-1">
+            <div class="font-medium text-xl flex justify-between p-2 mb-3">
+                <h1>Availables employes</h1>
+                <button onclick="closeLoad()"
+                    class="bg-red-500 text-white flex items-center text-center rounded px-2">&times;</button>
+            </div>
+            <div id="loadContainer" class="overflow-y-scroll myScroll border-2 h-[40vh]">
+
+            </div>
+
+
+        </div>
+
     </div>
 
 
