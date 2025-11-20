@@ -64,7 +64,7 @@ function addExperience() {
 
     //                 </div>` ;
     let expBloc = document.createElement("div");
-    expBloc.className = "grid grid-cols-2 grid-rows-1 gap-x-3 gap-y-1 p-2 bg-gray-100 border rounded-md mx-2"
+    expBloc.className = "expForm grid grid-cols-2 grid-rows-1 gap-x-3 gap-y-1 p-2 bg-gray-100 border rounded-md mx-2"
     expBloc.innerHTML = `<div class="flex flex-col">
                             <label class="mb-1 font-medium text-gray-700" for="Entreprise">Entreprise</label>
                             <input id="Entreprise" class="border-2 w-full rounded-lg  p-2" type="text"
@@ -88,12 +88,14 @@ function addExperience() {
                             <button class="deleteExp bg-red-400 w-fit  hover:bg-red-500 rounded-md px-3 py-1"> <i class="fa-solid fa-trash"></i> Delete     </button>`
 
     cardPlaces.appendChild(expBloc)
-    console.log(expBloc.querySelector(".deleteExp"))
+    // console.log(expBloc.querySelector(".deleteExp"))
 
     expBloc.querySelector(".deleteExp").addEventListener("click", () => {
 
         expBloc.remove()
     })
+
+
 }
 
 function saveEmploye() {
@@ -102,6 +104,8 @@ function saveEmploye() {
     let rule = Role.value;
     let mail = Email.value;
     let telephone = phone.value;
+    // let entreprise
+    let expreienceList = [];
 
     let empCard = `<div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
@@ -115,9 +119,25 @@ function saveEmploye() {
                     </div>`
 
     empCardContainer.insertAdjacentHTML("afterbegin", empCard)
-    closePopup()
+    // closePopup()
+    let expArr = document.querySelectorAll(".expForm")
 
+    expArr.forEach((ele) => {
+        // console.log(ele)
+        let experience = {
+            entreprise: ele.querySelector("#Entreprise").value,
+            poste: ele.querySelector("#Poste").value,
+            dateDebut : ele.querySelector("#dateDebut").value,
+            dateFin : ele.querySelector("#dateFin").value
+        };
+        // console.log(experience.entreprise)
+        // console.log(experience.dateFin)
+        expreienceList.push(experience);
+    })
+    console.log(expreienceList)
+    closePopup()
 }
+
 
 
 
