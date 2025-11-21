@@ -12,7 +12,44 @@ let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
 
-let employeList = []
+// let employeList = []
+
+let employeList = [
+    {
+        id: Date.now() + 1,
+        nom: "Jordan Belfort",
+        rule: "Manager",
+        mail: "jordan.belfort@company.com",
+        telephone: "0612345678",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbY9SHGISgQgDdxFU33ZgSRrdX3f_FJHsuZg&s"
+    },
+    {
+        id: Date.now() + 2,
+        nom: "Donnie Azoff",
+        rule: "Technicien IT",
+        mail: "donnie.azoff@company.com",
+        telephone: "0678123456",
+        img: "https://altselection.ouest-france.fr/wp-content/uploads/2025/06/Gojo-Satoru-au-coeur-dun-moment-cle-de-sa-jeunesse-dans-Jujutsu-Kaisen-grace-a-de-nouveaux-croquis-inedits.jpg"
+    },
+    {
+        id: Date.now() + 3,
+        nom: "Naomi Lapaglia",
+        rule: "Réceptionniste",
+        mail: "naomi.lapaglia@company.com",
+        telephone: "0654218765",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVWXfxtfSgzD0A_zqS9Wy__LGgvNI5tDUOw&s"
+    },
+    {
+        id: Date.now() + 4,
+        nom: "Mark Hanna",
+        rule: "Agent de sécurité",
+        mail: "mark.hanna@company.com",
+        telephone: "0698876543",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXibF_KOQp5WHqV-Q01nHJCQQ0uqnB1TJvwQ&s"
+    }
+];
+
+let tempEmpArr = []
 
 function openPopup() {
     popup.classList.remove("hidden")
@@ -99,9 +136,29 @@ function addExperience() {
 
 }
 
+function loadEmploye() {
+    employeList.forEach((data) => {
+        let dev = `<div id="${data.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+                        <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
+                            <img class="w-full h-full object-cover" src="${data.img}" alt="">
+                        </div>
+                        <div class=" ">
+                            <h3 class="font-semibold">${data.nom} </h3>
+                            <p class="text-sm text-gray-600">${data.rule}.</p>
+                        </div>
+
+                    </div>`
+                    empCardContainer.insertAdjacentHTML("afterbegin", dev)
+    })
+   
+}
+loadEmploye()
+
+
 function saveEmploye() {
 
     let employe = {
+        id: Date.now(),
         nom: fullName.value,
         rule: Role.value,
         mail: Email.value,
@@ -112,11 +169,11 @@ function saveEmploye() {
     };
     console.log(employe.rule)
 
-    let empCard = `<div class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+    let empCard = `<div id="${employe.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover" src="${employe.img}" alt="">
                         </div>
-                        <div class="border-2 ">
+                        <div class=" ">
                             <h3 class="font-semibold">${employe.nom} </h3>
                             <p class="text-sm text-gray-600">${employe.rule}.</p>
                         </div>
@@ -165,6 +222,7 @@ function dispoEmploye(roleAllowed, Area) {
     let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule))
     empAllowed.forEach(ele => {
         let div = document.createElement("div")
+        div.id = ele.id
         div.className = "bg-white shadow rounded-md p-2 border flex gap-1 items-center relative"
         div.innerHTML = `<div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                     <img class="w-full h-full object-cover" src="${ele.img}" alt="">
@@ -179,9 +237,21 @@ function dispoEmploye(roleAllowed, Area) {
         loadContainer.appendChild(div)
     });
 
-    document.querySelectorAll(".addBtn").forEach((e)=> {
-        e.addEventListener("click", {
-            
+    document.querySelectorAll(".addBtn").forEach((e) => {
+        e.addEventListener("click", () => {
+            for (let index = 0; index < employeList.length; index++) {
+                if (e.parentElement.parentElement.id == employeList[index].id) {
+                    console.log(employeList[index])
+                    tempEmpArr.push(employeList[index]);
+                    employeList = employeList.filter((e) => e != employeList[index])
+
+                    console.log(tempEmpArr)
+                    // console.log(employeList)
+                    document.getElementById(e.parentElement.parentElement.id).remove()
+                    e.parentElement.parentElement.remove()
+                }
+
+            }
         })
     })
 }
@@ -195,3 +265,4 @@ function dispoEmploye(roleAllowed, Area) {
 //     console.log(a + a);
 // }
 // sum(2,5);
+// console.log(Date.now())
