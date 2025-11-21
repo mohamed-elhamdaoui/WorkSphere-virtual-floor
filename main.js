@@ -11,12 +11,12 @@ let phone = document.getElementById("phone")
 let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
-
 // let employeList = []
-
+let unsignedEmp = []
 let employeList = [
     {
         id: Date.now() + 1,
+        inRoom: false,
         nom: "Jordan Belfort",
         rule: "Manager",
         mail: "jordan.belfort@company.com",
@@ -25,6 +25,7 @@ let employeList = [
     },
     {
         id: Date.now() + 2,
+        inRoom: true,
         nom: "Donnie Azoff",
         rule: "Technicien IT",
         mail: "donnie.azoff@company.com",
@@ -33,6 +34,7 @@ let employeList = [
     },
     {
         id: Date.now() + 3,
+        inRoom: false,
         nom: "Naomi Lapaglia",
         rule: "Réceptionniste",
         mail: "naomi.lapaglia@company.com",
@@ -41,6 +43,7 @@ let employeList = [
     },
     {
         id: Date.now() + 4,
+        inRoom: false,
         nom: "Mark Hanna",
         rule: "Agent de sécurité",
         mail: "mark.hanna@company.com",
@@ -137,7 +140,10 @@ function addExperience() {
 }
 
 function loadEmploye() {
-    employeList.forEach((data) => {
+
+    unsignedEmp = employeList.filter((e) => e.inRoom != true)
+    empCardContainer.innerHTML = ``
+    unsignedEmp.forEach((data) => {
         let dev = `<div id="${data.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover" src="${data.img}" alt="">
@@ -148,9 +154,9 @@ function loadEmploye() {
                         </div>
 
                     </div>`
-                    empCardContainer.insertAdjacentHTML("afterbegin", dev)
+        empCardContainer.insertAdjacentHTML("afterbegin", dev)
     })
-   
+
 }
 loadEmploye()
 
@@ -159,6 +165,7 @@ function saveEmploye() {
 
     let employe = {
         id: Date.now(),
+        inRoom: false,
         nom: fullName.value,
         rule: Role.value,
         mail: Email.value,
@@ -167,7 +174,7 @@ function saveEmploye() {
         expreienceList: []
 
     };
-    console.log(employe.rule)
+    console.log(employe)
 
     let empCard = `<div id="${employe.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
@@ -219,7 +226,9 @@ function dispoEmploye(roleAllowed, Area) {
     console.log(Area)
     console.log(employeList)
 
-    let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule))
+    let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule) && e.inRoom == false)
+    console.log(empAllowed)
+    loadContainer.innerHTML = ``;
     empAllowed.forEach(ele => {
         let div = document.createElement("div")
         div.id = ele.id
@@ -231,7 +240,7 @@ function dispoEmploye(roleAllowed, Area) {
                     <h3 class="font-semibold">${ele.nom} </h3>
                     <p class="text-sm text-gray-600">${ele.rule}.</p>
 
-                    <button class="addBtn absolute right-4  top-[25%] border-2 rounded-md bg-green-400 hover:bg-green-500 h-fit px-3 py-1">add to area</button>
+                    <button dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],,'ConferRoom') class="addBtn absolute right-4  top-[25%] border-2 rounded-md bg-green-400 hover:bg-green-500 h-fit px-3 py-1">add to area</button>
                 </div>`
 
         loadContainer.appendChild(div)
@@ -239,24 +248,42 @@ function dispoEmploye(roleAllowed, Area) {
 
     document.querySelectorAll(".addBtn").forEach((e) => {
         e.addEventListener("click", () => {
-            for (let index = 0; index < employeList.length; index++) {
-                if (e.parentElement.parentElement.id == employeList[index].id) {
-                    console.log(employeList[index])
-                    tempEmpArr.push(employeList[index]);
-                    employeList = employeList.filter((e) => e != employeList[index])
+            // for (let index = 0; index < employeList.length; index++) {
+            //     if (e.parentElement.parentElement.id == employeList[index].id) {
+            //         console.log(employeList[index])
+            //         tempEmpArr.push(employeList[index]);
+            //         employeList = employeList.filter((e) => e != employeList[index])
 
-                    console.log(tempEmpArr)
-                    // console.log(employeList)
-                    document.getElementById(e.parentElement.parentElement.id).remove()
-                    e.parentElement.parentElement.remove()
+            //         console.log(tempEmpArr)
+            //         // console.log(employeList)
+            //         document.getElementById(e.parentElement.parentElement.id).remove()
+            //         e.parentElement.parentElement.remove()
+            //     }
+
+            // }
+            
+            for (let i = 0; i < employeList.length; i++) {
+                console.log(i)
+                console.log("heeello")
+                // employeList.find((e)=> { e.inRoom })
+                if (e.parentElement.parentElement.id == employeList[i].id) {
+                    console.log(employeList[i]) ;
+                    employeList[i].inRoom = true;
+                    console.log(employeList[i])
+
+
                 }
-
             }
+
+            loadEmploye();
+            dispoEmploye(roleAllowed, Area)
         })
     })
 }
 
-
+employeList.forEach((e) => {
+    console.log(e.id)
+})
 
 // let x = 55 ;
 // delete x ;

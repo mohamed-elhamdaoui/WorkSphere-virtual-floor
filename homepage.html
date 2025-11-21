@@ -26,7 +26,7 @@
 
                 <div id="empCardContainer"
                     class="myScroll border-2 rounded-md p-1 m-3  h-[70vh] space-y-3 overflow-y-scroll  bg-gray-50 ">
-                    
+
 
 
 
@@ -59,31 +59,65 @@
             <!-- pnel right -->
             <section
                 class="bg-white bg-[url('/plan-tamplete.jpg')] bg-no-repeat bg-center bg-cover  my-4 flex justify-between">
-                <div class="w-[39%] h-full border-2 ">
-                    <div class="flex justify-center items-center border-2  h-[34%] bg-red-400 opacity-[40%] ">
+                <div class="w-[39%] h-full  ">
+                    <div class="flex justify-center items-center h-[34%] border-2 border-gray-300 
+            bg-red-300/30 rounded-xl shadow-sm">
                         <button id="ConferRoom"
-                            onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité'],'ConferRoom')"
-                            class="font-bold text-xl bg-white rounded-full px-2 text-center">+</button>
+                            onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],'ConferRoom')"
+                            class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </div>
-                    <div class="flex justify-center items-center border-2 h-[66%] bg-blue-400 opacity-[40%]">
-                        Réception</div>
+
+                    <div class="flex justify-center items-center border-2 h-[66%] border-gray-300 
+            bg-blue-300/30 rounded-xl">
+                        <button id="ConferRoom"
+                            onclick="dispoEmploye(['Réceptionniste','Manager','Nettoyage'],'ConferRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class=" w-[46%] flex flex-col justify-between">
                     <div class=" h-[35%]  flex">
                         <div
-                            class="border-2 w-[50%] flex justify-center items-center text-white  bg-yellow-300 opacity-70 ">
-                            Salle des serveurs
+                            class="border-2 w-[50%] flex justify-center items-center text-white rounded-xl  bg-gray-300 bg-yellow-300/30 ">
+                            <button id="ConferRoom"
+                                onclick="dispoEmploye(['Technicien IT','Manager','Nettoyage'],'ConferRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
                         </div>
-                        <div class="border-2 w-[50%] flex justify-center items-center bg-green-300 opacity-50">Salle de
-                            sécurité</div>
+                        <div
+                            class="border-2 w-[50%] flex justify-center items-center rounded-xl bg-gray-300 bg-green-300/30">
+                            Salle de
+                            <button id="ConferRoom"
+                                onclick="dispoEmploye(['Agent de sécurité','Manager','Nettoyage'],'ConferRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
 
                     </div>
                     <div class=" h-[35%]  flex">
-                        <div class=" w-[50%] flex justify-center items-center text-white  bg-purple-300 opacity-70">
-                            Salle du personnel
+                        <div
+                            class=" w-[50%] flex justify-center items-center text-white  bg-purple-300/30 bg-gray-300 ">
+                            <button id="ConferRoom"
+                                onclick="dispoEmploye(['Manager','Nettoyage','Autres rôles'],'ConferRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
                         </div>
-                        <div class=" w-[50%] flex justify-center items-center bg-orange-300 opacity-70">Salle d’archives
+                        <div
+                            class=" w-[50%] flex justify-center items-center bg-orange-300/40 rounded-xl border-2 opacity-70">
+                            <button id="ConferRoom"
+                                onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Autres rôles'],'ConferRoom')"
+                                class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
