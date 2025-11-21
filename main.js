@@ -25,7 +25,7 @@ let employeList = [
     },
     {
         id: Date.now() + 2,
-        inRoom: true,
+        inRoom: false,
         nom: "Donnie Azoff",
         rule: "Technicien IT",
         mail: "donnie.azoff@company.com",
@@ -226,6 +226,7 @@ function dispoEmploye(roleAllowed, Area) {
     console.log(Area)
     console.log(employeList)
 
+
     let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule) && e.inRoom == false)
     console.log(empAllowed)
     loadContainer.innerHTML = ``;
@@ -261,16 +262,27 @@ function dispoEmploye(roleAllowed, Area) {
             //     }
 
             // }
-            
+
             for (let i = 0; i < employeList.length; i++) {
                 console.log(i)
                 console.log("heeello")
                 // employeList.find((e)=> { e.inRoom })
                 if (e.parentElement.parentElement.id == employeList[i].id) {
-                    console.log(employeList[i]) ;
+                    console.log(employeList[i]);
                     employeList[i].inRoom = true;
                     console.log(employeList[i])
 
+                    let assignedCard = `<div
+                                class="bg-white shadow rounded-md border flex justify-between items-center h-fit w-fit">
+                                <div class="border-2  w-[40px]  h-[40px] rounded-full overflow-hidden">
+                                    <img class="w-full h-full object-cover" src="${employeList[i].img}" alt="">
+                                </div>
+                                <div class=" ">
+                                    <h3 class="font-normal text-xs">${employeList[i].nom} </h3>
+                                    <p class="text-xs text-gray-600">${employeList[i].rule}.</p>
+                                </div>
+                            </div>`
+                    document.getElementById(Area).insertAdjacentHTML("beforeend", assignedCard)
 
                 }
             }
