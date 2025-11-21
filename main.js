@@ -272,7 +272,10 @@ function dispoEmploye(roleAllowed, Area) {
                     employeList[i].inRoom = true;
                     console.log(employeList[i])
 
-                    let assignedCard = `<div
+                    let bloc = document.createElement("div")
+
+                    bloc.className = "relative "
+                    bloc.innerHTML = `<div id="${employeList[i].id}"
                                 class="bg-white shadow rounded-md border flex justify-between items-center h-fit w-fit">
                                 <div class="border-2  w-[40px]  h-[40px] rounded-full overflow-hidden">
                                     <img class="w-full h-full object-cover" src="${employeList[i].img}" alt="">
@@ -281,8 +284,10 @@ function dispoEmploye(roleAllowed, Area) {
                                     <h3 class="font-normal text-xs">${employeList[i].nom} </h3>
                                     <p class="text-xs text-gray-600">${employeList[i].rule}.</p>
                                 </div>
+                                <button onclick="unssigned(${employeList[i].id})" class="closeUnsigned absolute rounded-full  top-[-25%] right-[-8%]"><i class="fas fa-window-close"></i></button>
                             </div>`
-                    document.getElementById(Area).insertAdjacentHTML("beforeend", assignedCard)
+                    // let assignedCard =
+                    document.getElementById(Area).appendChild(bloc)
 
                 }
             }
@@ -292,6 +297,22 @@ function dispoEmploye(roleAllowed, Area) {
         })
     })
 }
+
+
+function unssigned(id) {
+
+    console.log(id)
+    let findEmp = employeList.find((e) => e.id == id)
+    document.getElementById(id).remove()
+    findEmp.inRoom = false
+    loadEmploye();
+    console.log(findEmp)
+
+
+}
+
+
+
 
 employeList.forEach((e) => {
     console.log(e.id)
@@ -305,3 +326,5 @@ employeList.forEach((e) => {
 // }
 // sum(2,5);
 // console.log(Date.now())
+
+console.log(document.querySelector("#ConferRoom").children.length)
