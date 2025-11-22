@@ -12,6 +12,7 @@ let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
 // let employeList = []
+
 let unsignedEmp = []
 let employeList = [
     {
@@ -51,6 +52,12 @@ let employeList = [
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXibF_KOQp5WHqV-Q01nHJCQQ0uqnB1TJvwQ&s"
     }
 ];
+
+function empEnAttend() {
+    console.log(employeList.length)
+    document.getElementById("empCntr").textContent = (employeList.filter((e)=> e.inRoom !=true)).length 
+}
+
 
 let tempEmpArr = []
 
@@ -155,6 +162,7 @@ function loadEmploye() {
 
                     </div>`
         empCardContainer.insertAdjacentHTML("afterbegin", dev)
+        empEnAttend()
     })
 
 }
@@ -218,6 +226,7 @@ let loadContainer = document.getElementById("loadContainer")
 function closeLoad() {
     empLoadPopup.classList.add("hidden")
     loadContainer.innerHTML = ``
+    empEnAttend()
 }
 
 function dispoEmploye(roleAllowed, Area) {
@@ -294,6 +303,7 @@ function dispoEmploye(roleAllowed, Area) {
 
             loadEmploye();
             dispoEmploye(roleAllowed, Area)
+            empEnAttend()
         })
     })
 }
@@ -306,6 +316,7 @@ function unssigned(id) {
     document.getElementById(id).remove()
     findEmp.inRoom = false
     loadEmploye();
+    empEnAttend()
     console.log(findEmp)
 
 
