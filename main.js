@@ -12,7 +12,7 @@ let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
 // let employeList = []
-let salles = ["ConferRoom","ReceptionRoom"];
+let salles = ["ReceptionRoom","ServerRoom","SecurityRoom","ArchiveRoom"];
 let unsignedEmp = []
 let employeList = [
     {
@@ -335,10 +335,10 @@ function unssigned(id) {
     let findEmp = employeList.find((e) => e.id == id)
     findEmp.inRoom = false
     document.getElementById(id).parentElement.remove()
-    
+
     loadEmploye();
     empEnAttend()
-    console.log(findEmp)
+    // console.log(findEmp)
     VoidRooms(salles)
 
 }
@@ -346,18 +346,22 @@ function unssigned(id) {
 
 
 function VoidRooms(salles) {
-    salles.forEach((e)=> {
+    salles.forEach((e) => {
         console.log(e)
-         let x = document.querySelector(`#${e}`)
-         
-         if(x.children.length == 0){
-            x.parentElement.parentElement.classList.add("bg-red-500/50")
+        let x = document.querySelector(`#${e}`)
+
+        if (x.children.length == 0) {
+            x.parentElement.classList.add("bg-red-400/50")
+            x.parentElement.classList.remove("bg-green-300/30")
+
             console.log()
-         }
-         console.log(x.children.length)
-         })
+        } else {
+            x.parentElement.classList.add("bg-green-300/30")
+            x.parentElement.classList.remove("bg-red-400/50")
+        }
+        console.log(x.children.length)
+    })
 }
-VoidRooms(salles)
 
 employeList.forEach((e) => {
     console.log(e.id)
