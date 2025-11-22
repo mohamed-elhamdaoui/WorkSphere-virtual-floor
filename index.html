@@ -60,11 +60,11 @@
             <section
                 class="bg-white bg-[url('/plan-tamplete.jpg')] bg-no-repeat bg-center bg-cover  my-4 flex justify-between">
                 <div class="w-[39%] h-full  ">
-                    <div class=" h-[34%] border-2 border-gray-300 
-            bg-red-300/30 rounded-xl shadow-sm">
+                    <div class=" h-[34%] border-2  overflow-hidden
+             rounded-xl shadow-sm">
                         <div class="mb-1">
                             <button
-                                onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],'ConferRoom')"
+                                onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],'ConferRoom',5)"
                                 class="font-bold text-lg bg-white text-gray-700 rounded-full w-9 h-9 
                shadow-md hover:shadow-xl">
                                 <i class="fa-solid fa-plus"></i>
@@ -80,16 +80,15 @@
 
                     </div>
 
-                    <div class="flex justify-center items-center border-2 h-[66%] border-gray-300 
-            bg-blue-300/30 rounded-xl">
-                        <div>
+                    <div class=" border-2 h-[66%]  rounded-xl">
+                        <div class="pb-3 border-2">
                             <button id="ConferRoom"
-                                onclick="dispoEmploye(['Réceptionniste','Manager','Nettoyage'],'ReceptionRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+                                onclick="dispoEmploye(['Réceptionniste','Manager','Nettoyage'],'ReceptionRoom',5)" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
-                        <div id="ReceptionRoom" class="flex-1 bg-green-400/30 flex flex-wrap gap-2">
+                        <div id="ReceptionRoom" class="flex-1 bg-green-400/30 flex flex-wrap gap-6 p-5">
 
                         </div>
                     </div>
@@ -98,7 +97,7 @@
                 <div class=" w-[46%] flex flex-col justify-between">
                     <div class=" h-[35%]  flex">
                         <div
-                            class="border-2 w-[50%] flex justify-center items-center text-white rounded-xl  bg-gray-300 bg-yellow-300/30 ">
+                            class="border-2 w-[50%]  text-white rounded-xl  bg-gray-300 bg-yellow-300/30 ">
                             <div>
                                 <button id="ConferRoom"
                                     onclick="dispoEmploye(['Technicien IT','Manager','Nettoyage'],'ServerRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
@@ -111,7 +110,7 @@
                             </div>
                         </div>
                         <div
-                            class="border-2 w-[50%] flex justify-center items-center rounded-xl bg-gray-300 bg-green-300/30">
+                            class="border-2 w-[50%] rounded-xl bg-gray-300 bg-green-300/30">
                             Salle de
                             <div>
                                 <button id="ConferRoom"
@@ -129,7 +128,7 @@
                     </div>
                     <div class=" h-[35%]  flex">
                         <div
-                            class=" w-[50%] flex justify-center items-center text-white  bg-purple-300/30 bg-gray-300 ">
+                            class=" w-[50%] text-white border-2 rounded-xl  bg-purple-300/30  ">
                             <div>
                                 <button id="ConferRoom"
                                     onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],'PersonelRoom')"
@@ -143,7 +142,7 @@
                             </div>
                         </div>
                         <div
-                            class=" w-[50%] flex justify-center items-center bg-orange-300/40 rounded-xl border-2 opacity-70">
+                            class=" w-[50%] bg-orange-300/30 rounded-xl border-2 ">
                             <div>
                                 <button id="ConferRoom" onclick="dispoEmploye(['Manager'],'ArchiveRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
@@ -271,10 +270,7 @@
 
     </div>
 
-
-
-
-</body>
 <script src="main.js"></script>
 
+</body>
 </html>

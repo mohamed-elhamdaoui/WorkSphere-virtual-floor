@@ -12,7 +12,7 @@ let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
 // let employeList = []
-
+let salles = ["ConferRoom","ReceptionRoom"];
 let unsignedEmp = []
 let employeList = [
     {
@@ -55,7 +55,7 @@ let employeList = [
 
 function empEnAttend() {
     console.log(employeList.length)
-    document.getElementById("empCntr").textContent = (employeList.filter((e)=> e.inRoom !=true)).length 
+    document.getElementById("empCntr").textContent = (employeList.filter((e) => e.inRoom != true)).length
 }
 
 
@@ -167,7 +167,7 @@ function loadEmploye() {
 
 }
 loadEmploye()
-
+VoidRooms(salles)
 
 function saveEmploye() {
 
@@ -214,6 +214,7 @@ function saveEmploye() {
 
     employeList.push(employe)
 
+    empEnAttend()
     closePopup()
 }
 
@@ -229,11 +230,25 @@ function closeLoad() {
     empEnAttend()
 }
 
-function dispoEmploye(roleAllowed, Area) {
+function dispoEmploye(roleAllowed, Area, limit) {
     empLoadPopup.classList.remove("hidden")
     console.log(roleAllowed)
     console.log(Area)
     console.log(employeList)
+
+
+
+    let position = document.getElementById(Area);
+    console.log(position.children.length)
+    if (position.children.length == limit - 2) {
+        alert("hello")
+        closeLoad()
+    }
+
+
+
+
+
 
 
     let empAllowed = employeList.filter((e) => roleAllowed.includes(e.rule) && e.inRoom == false)
@@ -273,6 +288,8 @@ function dispoEmploye(roleAllowed, Area) {
             // }
 
             for (let i = 0; i < employeList.length; i++) {
+
+
                 console.log(i)
                 console.log("heeello")
                 // employeList.find((e)=> { e.inRoom })
@@ -304,6 +321,9 @@ function dispoEmploye(roleAllowed, Area) {
             loadEmploye();
             dispoEmploye(roleAllowed, Area)
             empEnAttend()
+            // console.log(document.querySelector("#ConferRoom").children.length)
+            VoidRooms(salles)
+            closeLoad()
         })
     })
 }
@@ -313,17 +333,31 @@ function unssigned(id) {
 
     console.log(id)
     let findEmp = employeList.find((e) => e.id == id)
-    document.getElementById(id).remove()
     findEmp.inRoom = false
+    document.getElementById(id).parentElement.remove()
+    
     loadEmploye();
     empEnAttend()
     console.log(findEmp)
-
+    VoidRooms(salles)
 
 }
 
 
 
+function VoidRooms(salles) {
+    salles.forEach((e)=> {
+        console.log(e)
+         let x = document.querySelector(`#${e}`)
+         
+         if(x.children.length == 0){
+            x.parentElement.parentElement.classList.add("bg-red-500/50")
+            console.log()
+         }
+         console.log(x.children.length)
+         })
+}
+VoidRooms(salles)
 
 employeList.forEach((e) => {
     console.log(e.id)
@@ -337,5 +371,3 @@ employeList.forEach((e) => {
 // }
 // sum(2,5);
 // console.log(Date.now())
-
-console.log(document.querySelector("#ConferRoom").children.length)
