@@ -10,7 +10,7 @@ let Email = document.getElementById("Email")
 let phone = document.getElementById("phone")
 let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
-
+let infoEmp = document.getElementById("infoEmp")
 // let employeList = []
 let salles = ["ReceptionRoom", "ServerRoom", "SecurityRoom", "ArchiveRoom"];
 let unsignedEmp = []
@@ -22,7 +22,8 @@ let employeList = [
         rule: "Manager",
         mail: "jordan.belfort@company.com",
         telephone: "0612345678",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbY9SHGISgQgDdxFU33ZgSRrdX3f_FJHsuZg&s"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbY9SHGISgQgDdxFU33ZgSRrdX3f_FJHsuZg&s",
+        expreienceList: []
     },
     {
         id: Date.now() + 2,
@@ -31,7 +32,8 @@ let employeList = [
         rule: "Technicien IT",
         mail: "donnie.azoff@company.com",
         telephone: "0678123456",
-        img: "https://altselection.ouest-france.fr/wp-content/uploads/2025/06/Gojo-Satoru-au-coeur-dun-moment-cle-de-sa-jeunesse-dans-Jujutsu-Kaisen-grace-a-de-nouveaux-croquis-inedits.jpg"
+        img: "https://altselection.ouest-france.fr/wp-content/uploads/2025/06/Gojo-Satoru-au-coeur-dun-moment-cle-de-sa-jeunesse-dans-Jujutsu-Kaisen-grace-a-de-nouveaux-croquis-inedits.jpg",
+        expreienceList: []
     },
     {
         id: Date.now() + 3,
@@ -40,7 +42,8 @@ let employeList = [
         rule: "Réceptionniste",
         mail: "naomi.lapaglia@company.com",
         telephone: "0654218765",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVWXfxtfSgzD0A_zqS9Wy__LGgvNI5tDUOw&s"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVWXfxtfSgzD0A_zqS9Wy__LGgvNI5tDUOw&s",
+        expreienceList: []
     },
     {
         id: Date.now() + 4,
@@ -49,7 +52,8 @@ let employeList = [
         rule: "Agent de sécurité",
         mail: "mark.hanna@company.com",
         telephone: "0698876543",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXibF_KOQp5WHqV-Q01nHJCQQ0uqnB1TJvwQ&s"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXibF_KOQp5WHqV-Q01nHJCQQ0uqnB1TJvwQ&s",
+        expreienceList: []
     }
 ];
 
@@ -59,13 +63,65 @@ function empEnAttend() {
 }
 
 
+
+function displayInfo(e) {
+    let worker = employeList.find((ele) => (ele.id == e));
+    console.log(worker)
+    let expPart = ``;
+    worker.expreienceList.forEach((exp) => {
+        expPart += `
+            <br>
+             <h3 class="col-span-4 text-center font-bold text-black text-lg uppercase mt-4">Expériences</h3>
+        <div class="expCard border-2 border-green-300 flex flex-wrap bg-green-50 rounded-xl p-4 shadow-lg">
+
+ <div class="experience text-sm mt-3"><p><span class="font-semibold">Entreprise :</span> ${exp.entreprise}</p>
+ <p><span class="font-semibold">Entreprise :</span> ${exp.poste}</p>
+                <p><span class="font-semibold">Début :</span> ${exp.dateDebut}</p>
+                <p><span class="font-semibold">Fin :</span> ${exp.dateFin}</p>
+            </div>
+        </div> `
+
+    });
+
+    console.log(worker);
+    infoEmp.innerHTML = `<div class="all-info-popup relative inset-x-0 mx-auto top-1/2 -translate-y-1/2 bg-white w-full max-w-lg rounded-2xl shadow-xl p-4 h-[60vh] overflow-scroll [scrollbar-width:none] border-4 border-black/30">
+        <div class="grid grid-cols-[1fr 2fr] gap-5 p-5">
+
+            <img src="${worker.img
+        }" alt="Worker image" class="w-28 h-28 object-cover rounded-xl shadow-md border-amber-300/50 border-4">
+
+            <div class="infos gap-2 text-blue-700 text-sm border-[5px] h-[150px] p-3 col-span-1 rounded-xl shadow-lg">
+                <div class="border-b-2 border-blue-100 mb-3">
+                    <h3 class="font-bold text-black text-center"><i class="fas fa-person"></i> INFO GLOBAL</h3>
+                </div>
+                <h5><span class="font-semibold">Nom :</span> ${worker.nom}</h5>
+                <h5><span class="font-semibold">Rôle :</span> ${worker.rule
+        }</h5>
+                <h5><span class="font-semibold">Email :</span> ${worker.mail
+        }</h5>
+        <h5><span class="font-semibold">Tel :</span> ${worker.telephone}</h5>
+            </div>
+            <div class="col-span-2">
+                ${expPart || "No Experiences"}
+            </div>
+        </div>
+    </div>`;
+    infoEmp.classList.remove("hidden");
+}
+
+
 let tempEmpArr = []
 
 popup.parentElement.addEventListener("click", (e) => {
-if(e.target == popup.parentElement){
+    if (e.target == popup.parentElement) {
         e.target.classList.add("hidden")
 
-}
+    }
+})
+infoEmp.addEventListener("click", (e) => {
+    if (infoEmp == e.target) {
+        e.target.classList.add("hidden")
+    }
 })
 
 function openPopup() {
@@ -157,7 +213,7 @@ function loadEmploye() {
     unsignedEmp = employeList.filter((e) => e.inRoom != true)
     empCardContainer.innerHTML = ``
     unsignedEmp.forEach((data) => {
-        let dev = `<div id="${data.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+        let dev = `<div id="${data.id}" onclick="displayInfo(${data.id})" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover" src="${data.img}" alt="">
                         </div>
@@ -190,7 +246,7 @@ function saveEmploye() {
     };
     console.log(employe)
 
-    let empCard = `<div id="${employe.id}" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
+    let empCard = `<div id="${employe.id}" onclick="displayInfo(${employe.id})" class="bg-white shadow rounded-md p-2 border flex gap-1 items-center">
                         <div class="border-2  w-[60px]  h-[60px] rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover" src="${employe.img}" alt="">
                         </div>
@@ -271,7 +327,7 @@ function dispoEmploye(roleAllowed, Area, limit) {
                     <h3 class="font-semibold">${ele.nom} </h3>
                     <p class="text-sm text-gray-600">${ele.rule}.</p>
 
-                    <button dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],,'ConferRoom') class="addBtn absolute right-4  top-[25%] border-2 rounded-md bg-green-400 hover:bg-green-500 h-fit px-3 py-1">add to area</button>
+                    <button class="addBtn absolute right-4  top-[25%] border-2 rounded-md bg-green-400 hover:bg-green-500 h-fit px-3 py-1">add to area</button>
                 </div>`
 
         loadContainer.appendChild(div)
