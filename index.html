@@ -76,13 +76,14 @@
                     </div>
 
                     <div class=" border-2 h-[66%]  rounded-xl">
-                        <div class="pb-3 ">
-                            <button id="ConferRoom"
+                        <div class="pb-3 flex items-center">
+                            <button id=""
                                 onclick="dispoEmploye(['Réceptionniste','Manager','Nettoyage'],'ReceptionRoom',5)"
                                 class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
+                            <div class="border-2 bg-white rounded-lg px-1 ml-auto"><span id="empNmbr">0</span>/5</div>
                         </div>
                         <div id="ReceptionRoom" class="flex-1  flex flex-wrap gap-6 p-5">
 
@@ -92,27 +93,31 @@
 
                 <div class=" w-[46%] flex flex-col justify-between">
                     <div class=" h-[35%]  flex">
-                        <div class="border-2 w-[50%]  text-white rounded-xl   ">
-                            <div>
-                                <button id="ConferRoom"
-                                    onclick="dispoEmploye(['Technicien IT','Manager','Nettoyage'],'ServerRoom')" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
-               shadow-md hover:shadow-xl">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                            <div id="ServerRoom" class="flex-1  flex flex-wrap gap-2">
-
-                            </div>
-                        </div>
-                        <div class="border-2 w-[50%] rounded-xl ">
-                            Salle de
-                            <div>
-                                <button id="ConferRoom"
-                                    onclick="dispoEmploye(['Manager','Nettoyage','Agent de sécurité'],'SecurityRoom')"
+                        <div class="border-2 w-[50%]   rounded-xl   ">
+                            <div class="flex items-center">
+                                <button id=""
+                                    onclick="dispoEmploye(['Technicien IT','Manager','Nettoyage'],'ServerRoom',2)"
                                     class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+                                <div class="border-2 bg-white rounded-lg px-1 ml-auto "><span id="empNmbr">0</span>/2
+                                </div>
+                            </div>
+                            <div id="ServerRoom" class="flex-1  flex flex-wrap pl-3 pt-2 gap-2">
+
+                            </div>
+                        </div>
+                        <div class="border-2 w-[50%] rounded-xl ">
+                            <div class="flex items-center">
+                                <button id=""
+                                    onclick="dispoEmploye(['Manager','Nettoyage','Agent de sécurité'],'SecurityRoom',2)"
+                                    class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+               shadow-md hover:shadow-xl">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <div class="border-2 bg-white rounded-lg px-1 ml-auto"><span id="empNmbr">0</span>/2
+                                </div>
                             </div>
                             <div id="SecurityRoom" class="flex-1  flex flex-wrap gap-2">
 
@@ -121,25 +126,29 @@
 
                     </div>
                     <div class=" h-[35%]  flex">
-                        <div class=" w-[50%] text-white border-2 rounded-xl   ">
-                            <div>
-                                <button id="ConferRoom"
-                                    onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles'],'PersonelRoom')"
+                        <div class=" w-[50%] border-2 rounded-xl   ">
+                            <div class="flex items-center">
+                                <button id=""
+                                    onclick="dispoEmploye(['Réceptionniste','Technicien IT','Agent de sécurité','Manager','Nettoyage','Autres rôles',2],'PersonelRoom')"
                                     class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+                                <div class="border-2 bg-white rounded-lg px-1 ml-auto"><span id="empNmbr">0</span>/2
+                                </div>
                             </div>
                             <div id="PersonelRoom" class="flex-1  flex flex-wrap gap-2">
 
                             </div>
                         </div>
                         <div class=" w-[50%]  rounded-xl border-2 ">
-                            <div>
-                                <button id="ConferRoom" onclick="dispoEmploye(['Manager'],'ArchiveRoom',1)" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
+                            <div class="flex items-center">
+                                <button id="" onclick="dispoEmploye(['Manager'],'ArchiveRoom',1)" class="font-bold text-lg bg-white text-gray-700 rounded-full w-10 h-10 
                shadow-md hover:shadow-xl">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+                                <div class="border-2 bg-white rounded-lg px-1 ml-auto"><span id="empNmbr">0</span>/1
+                                </div>
                             </div>
                             <div id="ArchiveRoom" class="flex-1  flex flex-wrap gap-2">
 

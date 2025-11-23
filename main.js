@@ -287,7 +287,7 @@ function dispoEmploye(roleAllowed, Area, limit) {
             // }
 
             for (let i = 0; i < employeList.length; i++) {
-
+console.log(Area)
 
                 console.log(i)
                 console.log("heeello")
@@ -309,10 +309,12 @@ function dispoEmploye(roleAllowed, Area, limit) {
                                     <h3 class="font-normal text-xs">${employeList[i].nom} </h3>
                                     <p class="text-xs text-gray-600">${employeList[i].rule}.</p>
                                 </div>
-                                <button onclick="unssigned(${employeList[i].id})" class="closeUnsigned absolute rounded-full  top-[-25%] right-[-8%]"><i class="fas fa-window-close"></i></button>
+                                <button onclick="unssigned(${employeList[i].id},${Area})" class="closeUnsigned absolute rounded-full  top-[-25%] right-[-8%]"><i class="fas fa-window-close"></i></button>
                             </div>`
                     // let assignedCard =
-                    document.getElementById(Area).appendChild(bloc)
+                    let zone = document.getElementById(Area)
+                    zone.appendChild(bloc)
+                    zone.parentElement.querySelector("#empNmbr").textContent = zone.childElementCount
 
                 }
             }
@@ -328,12 +330,16 @@ function dispoEmploye(roleAllowed, Area, limit) {
 }
 
 
-function unssigned(id) {
+function unssigned(id,Area) {
 
     console.log(id)
     let findEmp = employeList.find((e) => e.id == id)
     findEmp.inRoom = false
     document.getElementById(id).parentElement.remove()
+console.log(Area)
+    
+    // console.log(zone)
+    Area.parentElement.querySelector("#empNmbr").textContent = Area.childElementCount;
 
     loadEmploye();
     empEnAttend()
