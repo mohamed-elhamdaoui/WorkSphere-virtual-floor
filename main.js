@@ -12,7 +12,7 @@ let imgInput = document.getElementById("imgInput")
 let empCardContainer = document.getElementById("empCardContainer")
 
 // let employeList = []
-let salles = ["ReceptionRoom","ServerRoom","SecurityRoom","ArchiveRoom"];
+let salles = ["ReceptionRoom", "ServerRoom", "SecurityRoom", "ArchiveRoom"];
 let unsignedEmp = []
 let employeList = [
     {
@@ -61,28 +61,31 @@ function empEnAttend() {
 
 let tempEmpArr = []
 
-popup.parentElement.addEventListener("click",(e)=>{
-    e.target.classList.add("hidden")
+popup.parentElement.addEventListener("click", (e) => {
+if(e.target == popup.parentElement){
+        e.target.classList.add("hidden")
+
+}
 })
 
 function openPopup() {
-    
+
     popup.parentElement.classList.remove("hidden")
 
     photoURL.addEventListener("input", () => {
 
         // console.log(photoURL.value)
-        imgInput.onerror = ()=> {
+        imgInput.onerror = () => {
             imgInput.src = "Image-not-found.png"
-}
-    
-            imgInput.src = photoURL.value;
-        
+        }
+
+        imgInput.src = photoURL.value;
+
     })
 }
 
 function closePopup() {
-    
+
     popup.parentElement.classList.add("hidden")
 }
 
@@ -291,7 +294,7 @@ function dispoEmploye(roleAllowed, Area, limit) {
             // }
 
             for (let i = 0; i < employeList.length; i++) {
-console.log(Area)
+                console.log(Area)
 
                 console.log(i)
                 console.log("heeello")
@@ -334,14 +337,14 @@ console.log(Area)
 }
 
 
-function unssigned(id,Area) {
+function unssigned(id, Area) {
 
     console.log(id)
     let findEmp = employeList.find((e) => e.id == id)
     findEmp.inRoom = false
     document.getElementById(id).parentElement.remove()
-console.log(Area)
-    
+    console.log(Area)
+
     // console.log(zone)
     Area.parentElement.querySelector("#empNmbr").textContent = Area.childElementCount;
 
