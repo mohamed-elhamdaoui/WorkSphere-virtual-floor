@@ -68,13 +68,12 @@ function openPopup() {
     photoURL.addEventListener("input", () => {
 
         // console.log(photoURL.value)
-        if (photoURL.value.trim() === "") {
+        imgInput.onerror = ()=> {
             imgInput.src = "Image-not-found.png"
-
-        } else {
+}
+    
             imgInput.src = photoURL.value;
-        }
-        console.log(imgInput.src)
+        
     })
 }
 
@@ -240,8 +239,8 @@ function dispoEmploye(roleAllowed, Area, limit) {
 
     let position = document.getElementById(Area);
     console.log(position.children.length)
-    if (position.children.length == limit - 2) {
-        alert("hello")
+    if (position.children.length == limit) {
+        alert("This zone , acheived their limit capacity")
         closeLoad()
     }
 
