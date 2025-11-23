@@ -61,8 +61,12 @@ function empEnAttend() {
 
 let tempEmpArr = []
 
+popup.parentElement.addEventListener("click",(e)=>{
+    e.target.classList.add("hidden")
+})
+
 function openPopup() {
-    popup.classList.remove("hidden")
+    
     popup.parentElement.classList.remove("hidden")
 
     photoURL.addEventListener("input", () => {
@@ -78,7 +82,7 @@ function openPopup() {
 }
 
 function closePopup() {
-    popup.classList.add("hidden")
+    
     popup.parentElement.classList.add("hidden")
 }
 
