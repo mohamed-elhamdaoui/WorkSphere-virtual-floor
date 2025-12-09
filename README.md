@@ -120,3 +120,4 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ---
 
 ⭐ N'hésitez pas à mettre une étoile si ce projet vous a été utile !
+
